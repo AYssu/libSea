@@ -1,4 +1,4 @@
-// https://github.com/AYssu/libSea
+
 // by 阿夜
 
 #ifndef Sea__H
@@ -73,20 +73,23 @@ extern "C++"
     void Write(char *FilePath, char *contents); // 文件路径 文件内容
 
     // T3登录 配置 全局数据加密->开启 加密算法->base64自定义编码集 请求值，返回值加密->开启 请求值编码->HEX 时间戳校验->开启 签名校验->双向签名 返回值格式->文本
-    void T3_LOAD(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, struct T3_Json &t3_Json); // T3网络验证
-    void T3_GX(const char *url, int code, int version, struct T3_Json &t3_Json);                                                               // T3网络验证 获取更新 安全传输关闭
-    void T3_GG(const char *url, int code, struct T3_Json &t3_Json);                                                                            // T3网络验证 获取公告 安全传输关闭
+    int T3_LOAD(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, struct T3_Json &t3_Json); // T3网络验证
+    int T3_GX(const char *url, int code, int version, struct T3_Json &t3_Json);                                                               // T3网络验证 获取更新 安全传输关闭
+    int T3_GG(const char *url, int code, struct T3_Json &t3_Json);                                                                            // T3网络验证 获取公告 安全传输关闭
+    bool checkVPN();//VPN检测
 
-    void SetMemPID(pid_t ipid); //使用内存函数之前先设置pid方法即可 这个方法一定要之前设置
+    void SetMemPID(pid_t ipid);                          // 使用内存函数之前先设置pid方法即可 这个方法一定要之前设置
     long Mem_get_module_cd(const char *name, int index); // 获取内存CD头
     long Mem_get_module_cb(const char *name, int index); // 获取内存CB头
 
-    long Mem_readPointer(long addr, long *arr, int sz); // 读取数组链条
-    long Mem_lsp64(long addres);                        // 指针跳转
-    float Mem_ReadFloat(long addres);                   // 获取地址的Float
-    int Mem_ReadInt(long addres);                       // 获取内存的Dworld
-    void Mem_WriteFloat(long addres, float fix);        // 写入指定内存的Float
-    void Mem_WriteInt(long addres, int fix);            // 写入指定内存的Dworld
+    bool mem_vm_readv(long address, void *buffer, size_t size); // 公开接口
+    bool mem_vm_writev(long address, void *buffer, size_t size); // 公开接口
+    long Mem_readPointer(long addr, long *arr, int sz);          // 读取数组链条
+    long Mem_lsp64(long addres);                                 // 指针跳转
+    float Mem_getFloat(long addres);                            // 获取地址的Float
+    int Mem_getDword(long addres);                                // 获取内存的Dworld
+    void Mem_WriteFloat(long addres, float fix);                 // 写入指定内存的Float
+    void Mem_WriteDword(long addres, int fix);                     // 写入指定内存的Dworld
 #ifdef __cplusplus
 }
 #endif
