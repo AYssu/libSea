@@ -1,4 +1,4 @@
-# libSea 静态库简绍 created by AYssu
+# libSea 静态库简绍 下载最新请切换main分支
 
 libSea 是一款基于网络验证和内存工具集成的静态库
 
