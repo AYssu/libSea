@@ -54,6 +54,8 @@ extern "C++"
     // 定义函数
     int Timecheck(int year, int mon, int day, int hour, int min, int sec); // 距离目标日期时间 返回时间差秒
     int getPID(const char *packageName);                                   // 获取游戏进程 理论通杀所有游戏
+    int getPidByPkgName(const char *packageName);                          // 普通读取进程PID
+    std::string executeShellCommand(const std::string &command);           // 获取执行命令结果
     void *build_mmap(const char *filename, bool readonly, int msize);      // 封装mmap函数库
     void setColor(Color color);                                            // 设置控制台颜色
 
@@ -76,20 +78,20 @@ extern "C++"
     int T3_LOAD(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, struct T3_Json &t3_Json); // T3网络验证
     int T3_GX(const char *url, int code, int version, struct T3_Json &t3_Json);                                                               // T3网络验证 获取更新 安全传输关闭
     int T3_GG(const char *url, int code, struct T3_Json &t3_Json);                                                                            // T3网络验证 获取公告 安全传输关闭
-    bool checkVPN();//VPN检测
+    bool checkVPN();                                                                                                                          // VPN检测
+    bool Mem_isRoot();                                                                                                                        // Root判断
+    void SetMemPID(pid_t ipid);                                                                                                               // 使用内存函数之前先设置pid方法即可 这个方法一定要之前设置
+    long Mem_get_module_cd(const char *name, int index);                                                                                      // 获取内存CD头
+    long Mem_get_module_cb(const char *name, int index);                                                                                      // 获取内存CB头
 
-    void SetMemPID(pid_t ipid);                          // 使用内存函数之前先设置pid方法即可 这个方法一定要之前设置
-    long Mem_get_module_cd(const char *name, int index); // 获取内存CD头
-    long Mem_get_module_cb(const char *name, int index); // 获取内存CB头
-
-    bool mem_vm_readv(long address, void *buffer, size_t size); // 公开接口
+    bool mem_vm_readv(long address, void *buffer, size_t size);  // 公开接口
     bool mem_vm_writev(long address, void *buffer, size_t size); // 公开接口
     long Mem_readPointer(long addr, long *arr, int sz);          // 读取数组链条
     long Mem_lsp64(long addres);                                 // 指针跳转
-    float Mem_getFloat(long addres);                            // 获取地址的Float
-    int Mem_getDword(long addres);                                // 获取内存的Dworld
+    float Mem_getFloat(long addres);                             // 获取地址的Float
+    int Mem_getDword(long addres);                               // 获取内存的Dworld
     void Mem_WriteFloat(long addres, float fix);                 // 写入指定内存的Float
-    void Mem_WriteDword(long addres, int fix);                     // 写入指定内存的Dworld
+    void Mem_WriteDword(long addres, int fix);                   // 写入指定内存的Dworld
 #ifdef __cplusplus
 }
 #endif
