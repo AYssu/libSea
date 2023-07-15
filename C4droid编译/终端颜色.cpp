@@ -6,7 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-	printf("\n颜色测试开始\n");
 	setColor(COLOR_GREEN);
 	printf("我是绿色\n");
 	setColor(COLOR_SKY_BLUE);

@@ -7,8 +7,6 @@
 
 int main(int argc, char *argv[])
 {
-    printf("\n进程获取开始\n");
-
 	int pid = getPID("com.pubg.newstate");
 	//此pid为临时变量 
 	if (pid <= 0)

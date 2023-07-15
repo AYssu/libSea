@@ -7,9 +7,8 @@
 
 int main(int argc, char *argv[])
 {
-    printf("\n时间校验开始\n");
-
-	int TiemS = Timecheck(2023, 5, 23, 18, 33, 0);
+  
+	int TiemS = Timecheck(2025, 5, 23, 18, 33, 0);
     //设置目标时间
 	printf("剩余 %d S \n", TiemS);
 	if (TiemS < 0)

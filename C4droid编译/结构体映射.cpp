@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    printf("\nmmap测试开始\n");
+   
 	struct Response
 	{
 		char name[4096];
@@ -32,5 +32,6 @@ int main(int argc, char *argv[])
 		printf("name-> %s X-> %.2f Y-> %.2f W -> %.2f\n", recive->name, recive->x, recive->y, recive->w); // 注意这边是打印的recive的结构体映射
 		usleep(30000);
 	}
+	
     return 0;
 }
