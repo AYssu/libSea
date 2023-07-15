@@ -70,8 +70,10 @@ void T3_TestLOAD()
 int main(int argc, char const *argv[])
 {
 
-	//T3_TestLOAD();
+	setSecurity(true,true,true);
+	// 参数1 开启VPN检测 参数2 开启 网络抓包检测(Root有用) 参数3 打印更改信息
+	T3_TestLOAD();
 	T3_TestGX();
-//	T3_TestGG();
+	T3_TestGG();
 	return 0;
 }
