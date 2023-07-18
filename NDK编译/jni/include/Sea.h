@@ -61,6 +61,9 @@ extern "C++"
 
     void CleanBash(); // 初始化静态库
 
+    void initTicks(); // 为程序降低降低CPU设计 使用前必须初始化
+    void keepCPU();   // 放在循环结束里面 设计原理维持for while do while 循环的CPU消耗
+
     char *http_get(const char *url);                        // http get 封装
     char *http_post(const char *url, const char *params);   // http post 封装
     char *http_put(const char *url, const char *params);    // http put 封装
@@ -83,6 +86,7 @@ extern "C++"
     bool checkVPN();                                     // VPN检测
     bool checkHttp();                                    // 抓包检测
     bool Mem_isRoot();                                   // Root判断
+    bool processExamine(std::string list[], int size);   // 进程查找 查找关键进程 Root
     void SetMemPID(pid_t ipid);                          // 使用内存函数之前先设置pid方法即可 这个方法一定要之前设置
     long Mem_get_module_cd(const char *name, int index); // 获取内存CD头
     long Mem_get_module_cb(const char *name, int index); // 获取内存CB头

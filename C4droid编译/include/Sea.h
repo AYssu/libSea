@@ -61,6 +61,9 @@ extern "C++"
 
     void CleanBash(); // 初始化静态库
 
+    void initTicks(); // 为程序降低降低CPU设计 使用前必须初始化
+    void keepCPU();   // 放在循环结束里面 设计原理维持for while do while 循环的CPU消耗
+
     char *http_get(const char *url);                        // http get 封装
     char *http_post(const char *url, const char *params);   // http post 封装
     char *http_put(const char *url, const char *params);    // http put 封装
