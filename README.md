@@ -2,11 +2,9 @@
 
 食用方法 终端安装git 
 
-``
-apt install git
+`` apt install git ``
+``git clone https://github.com/AYssu/libSea.git``
 
-git clone https://github.com/AYssu/libSea.git
-``
 
 如果一直没进度 尝试挂VPN解决 
 
