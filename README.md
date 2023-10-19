@@ -2,9 +2,18 @@
 
 食用方法 终端安装 **git** 
 
-ubuntu `` apt install git ``
+ubuntu 
 
-termux `` pkg install git ``
+```bash
+apt install git 
+```
+
+termux
+
+```bash 
+pkg install git
+```
+
 ```bash
 git --version
 git clone https://github.com/AYssu/libSea.git
