@@ -1,5 +1,12 @@
 # libSea 静态库简绍 下载最新请切换main分支
 
+食用方法 终端安装git 
+'''
+apt install git
+git clone https://github.com/AYssu/libSea.git
+'''
+如果一直没进度 尝试挂VPN解决 
+
 libSea 是一款基于网络验证和内存工具集成的静态库
 
 ## 内置了很多强大实用的函数方法封装 
