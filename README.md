@@ -43,22 +43,22 @@ libSea 是一款基于网络验证和内存工具集成的静态库 目前第一
 目前已支持C4droid jni未写示例 但是强者不需要例子也能知道如何对接
 
 # T3验证对接示例
-> 准备后台配置
-  >> 全局数据加密->开启 <br>
+> 
+  准备后台配置 <br>
+  全局数据加密-> 开启 <br>
   加密算法->base64自定义编码集 <br>
   请求值，返回值加密->开启  <br>
   请求值编码->HEX  <br>
   时间戳校验->开启  <br>
   签名校验->双向签名  <br>
   返回值格式->文本  <br>
-  返回带时间撮 <br>
+  返回带时间戳 <br>
   后台 `` https://www.t3yanzheng.com ``
 
+![Alt text](/example/后台配置.png)
 > ### 安全模块 **SafeModel**
 >>  
 ```cpp
-#include "include/Sea.hpp"
-
 int main(int argc, char const *argv[])
 {
   //使用方法 在 main函数最前面开启
@@ -72,8 +72,6 @@ int main(int argc, char const *argv[])
 > ### 登录解绑方法
 >> 
 ```cpp
-#include "include/Sea.hpp"
-
 int main(int argc, char const *argv[])
 {
 	//配置信息 分别为 单码登录 单吗解绑 base64自定义密钥 后台密钥
@@ -117,11 +115,11 @@ int main(int argc, char const *argv[])
 }
 ```
 
-> ### 获取广告
+![Alt text](/example/登录解绑.png)
+
+> ### 获取公告
 >> 
 ```cpp
-#include "include/Sea.hpp"
-
 int main(int argc, char const *argv[])
 {
 	T3_Json t3_Json{};
@@ -132,12 +130,11 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 ```
+![Alt text](/example/公告.png)
 
 > ### 获取更新
 >> 
 ```cpp
-#include "include/Sea.hpp"
-
 int main(int argc, char const *argv[])
 {
 	//在后台验证的是code 不是那个版本号 注意区分
@@ -156,5 +153,32 @@ int main(int argc, char const *argv[])
 	}
 	return 0;
 }
+```
+
+![Alt text](/example/更新.png)
+
+> ### POST GET 示例
+>>
+```cpp
+int main(int argc, char const *argv[])
+{
+	char *http = (char *)malloc(8888);
+	http_get("w.t3yanzheng.com","/499D930AE737D128",&http);
+	printf("读取内容:%s\n\n", http);
+
+	char *post = (char *)malloc(8888);
+	// 随便写的例子 这么用就对了 随便写的 注意前面是域名 后面是url 最后是post参数
+	http_post("w.t3yanzheng.com","/499D930AE737D128","print=json",&post);
+	printf("提交返回内容:%s\n", post);
+	return 0;
+}
+```
+![Alt text](/example/POST_GET.png)
+
+> ### 文本读写
+
+>> 
+```cpp
+
 ```
 
