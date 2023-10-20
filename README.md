@@ -179,6 +179,15 @@ int main(int argc, char const *argv[])
 
 >> 
 ```cpp
-
+int main(int argc, char const *argv[])
+{
+	Write((char*)"/sdcard/test.txt",(char*)"嗷呜现在是写入");
+	char *txt = Read((char*)"/sdcard/test.txt");
+	printf("读取的内容:%s\n",txt);
+	return 0;
+}
 ```
+
+![Alt text](/example/写入读取.png)
+
 
