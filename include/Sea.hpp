@@ -7,6 +7,7 @@
 
 #ifdef __cplusplus
 #include <string>
+#include <vector>
 
 struct T3_Json
 {
