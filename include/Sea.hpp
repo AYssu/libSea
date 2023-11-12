@@ -60,7 +60,6 @@ extern "C++"
     // 没有实现其他网络验证已经加密算法 如有需要自行调用网络请求去实现 大部分加密解密功能都有 不提供教程 不推荐小白自行尝试
     void mem_CheckVersion(); //打印当前静态库版本  在线检测更新
     int T3_LogIn(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, T3_Json &t3_Json); // T3网络验证
-    //int T3_LogIn2(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, T3_Json &t3_Json); // T3网络验证
     int T3_Update(const char *url, int code, int version, T3_Json &t3_Json);                                                            // T3网络验证 获取更新 安全传输关闭
     int T3_Notice(const char *url, int code, T3_Json &t3_Json);                                                                         // T3网络验证 获取公告软件安全传输关闭
 
@@ -116,8 +115,6 @@ extern "C++"
     //-------------------内存管理拓展
     long Mem_readPointer(long addr, long *arr, int sz);          // 读取数组链条 传入数组 
     long Mem_readPointer(long orgin,std::vector<long>& vec);//读取指针 升级版噢
-    template <typename... s>
-    long Mem_readPointer(long addr, s... args);//智能读取指针 
 #ifdef __cplusplus
 }
 #endif
