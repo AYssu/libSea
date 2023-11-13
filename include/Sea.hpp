@@ -72,7 +72,6 @@ extern "C++"
 
     //-------------------网络请求区
     int http_post(const char *hostname, const char *url, const char *cs, char **run); // 网络POST 主机地址 地址 传入数据 接受数据
-    //int http_post2(const char *hostname, const char *url, const char *cs, char **run); // 更改部分写法 
     int http_get(const char *hostname, const char *url, char **run);                  // 同上 少了一个提交的数据 baidu.com url传入/即可
 
     //-------------------文本读写区
@@ -100,7 +99,7 @@ extern "C++"
     bool mem_vm_readv(long address, void *buffer, size_t size);  // 公开接口 可以实现结构体的读取
     bool mem_vm_writev(long address, void *buffer, size_t size); // 公开接口 同上
     long Mem_lsp64(long addres);                                 // 指针跳转
-    long Mem_lsp(long addres); //兼容lsp32 lsp64 上面的lsp64 也兼容32 只是方便这么写而已
+    long Mem_lsp32(long addres);
     // 数据声明 原本是想要用aoto封装读写 但是考虑到小小白也不会 就舍弃了
     float Mem_getFloat(long addres);             // 获取地址的Float
     int Mem_getDword(long addres);               // 获取内存的Dworld
