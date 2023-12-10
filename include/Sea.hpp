@@ -58,7 +58,7 @@ extern "C++"
     //-------------------T3网络验证封装区
     // T3登录 配置 全局数据加密->开启 加密算法->base64自定义编码集 请求值，返回值加密->开启 请求值编码->HEX 时间戳校验->开启 签名校验->双向签名 返回值格式->文本 返回带时间撮
     // 没有实现其他网络验证已经加密算法 如有需要自行调用网络请求去实现 大部分加密解密功能都有 不提供教程 不推荐小白自行尝试
-    void mem_CheckVersion(); //打印当前静态库版本  在线检测更新
+    void mem_CheckVersion();                                                                                                            // 打印当前静态库版本  在线检测更新
     int T3_LogIn(const char *url, const char *base64, const char *key, const char *kami, const char *imei, int code, T3_Json &t3_Json); // T3网络验证
     int T3_Update(const char *url, int code, int version, T3_Json &t3_Json);                                                            // T3网络验证 获取更新 安全传输关闭
     int T3_Notice(const char *url, int code, T3_Json &t3_Json);                                                                         // T3网络验证 获取公告软件安全传输关闭
@@ -95,25 +95,29 @@ extern "C++"
     //-------------------内存管理区
     // 只提供syscall内存读取的方法 过CRC校验请自行绕道 暂且提供D/F类型的数据更改和读取
 
-    int initPackage(std::string packageName,bool printLog);                   // 初始化内存广角
+    int initPackage(std::string packageName, bool printLog);     // 初始化内存广角
     bool mem_vm_readv(long address, void *buffer, size_t size);  // 公开接口 可以实现结构体的读取
     bool mem_vm_writev(long address, void *buffer, size_t size); // 公开接口 同上
-    long Mem_lsp64(long addres);                                 // 指针跳转
-    long Mem_lsp32(long addres);
+    long Mem_lsp64(long addres);                                 // 指针跳转 没有32位 谁爱用谁写
     // 数据声明 原本是想要用aoto封装读写 但是考虑到小小白也不会 就舍弃了
     float Mem_getFloat(long addres);             // 获取地址的Float
     int Mem_getDword(long addres);               // 获取内存的Dworld
     void Mem_WriteFloat(long addres, float fix); // 写入指定内存的Float
     void Mem_WriteDword(long addres, int fix);   // 写入指定内存的Dworld
 
-    //获取模块首地址
+    // 获取模块首地址
     long Mem_get_module_cb(const char *name, int index);
-    long Mem_get_module_cb(const char *name, int index,bool isSplit,const char * txt); //具体就加了一个条件 因为有些内存字段在r-rw 有些在r-p
-    long Mem_get_module_cd(const char *name, int index);
+    long Mem_get_module_cb(const char *name, int index, bool isSplit, const char *txt); // 具体就加了一个条件 因为有些内存字段在r-rw 有些在r-p
+    long Mem_get_module(const char *name, int index);
+    long Mem_get_module(char *module_name); // 内核模块获取方式 注意区分
 
     //-------------------内存管理拓展
-    long Mem_readPointer(long addr, long *arr, int sz);          // 读取数组链条 传入数组 
-    long Mem_readPointer(long orgin,std::vector<long>& vec);//读取指针 升级版噢
+    long Mem_readPointer(long addr, long *arr, int sz);       // 读取数组链条 传入数组
+    long Mem_readPointer(long orgin, std::vector<long> &vec); // 读取指针 升级版噢
+
+    // QX驱动模块 目前支持QX8.2
+    bool initQX(bool info); // 开启QX内核支持 当然框架肯定就废了 自行抉择
+
 #ifdef __cplusplus
 }
 #endif
