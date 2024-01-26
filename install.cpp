@@ -70,7 +70,7 @@ int main()
 	#if defined (__arm64__)|| defined (__aarch64__)
     printf("你的系统是arm64位: 64-bit [__arm64__ arch]\n");
     strcat(path_inc,"/gcc/aarch64-linux-android/include/");
-    strcpy(path_lib,"cp lib64/libSea.a ");
+    strcpy(path_lib,"cp arm64-v8a/libSea.a ");
     strcat(path_lib,path);
     strcat(path_lib,"/gcc/aarch64-linux-android/lib/");
     #else

@@ -1,5 +1,4 @@
-
-// by 阿夜 V2Tools
+// by 阿夜 V2Tools 有点改变 把long 换成了uintper_t 也就无符号长整形 其他的也就内核支持 自用模块 无需过多研究
 // 使用的所有功能面向开发者 并不提供全部例子 不建议小白使用
 
 #ifndef Sea__H
@@ -98,7 +97,8 @@ extern "C++"
     int initPackage(std::string packageName, bool printLog);     // 初始化内存广角
     bool mem_vm_readv(uintptr_t address, void *buffer, size_t size);  // 公开接口 可以实现结构体的读取
     bool mem_vm_writev(uintptr_t address, void *buffer, size_t size); // 公开接口 同上
-    uintptr_t Mem_lsp64(uintptr_t addres);                                 // 指针跳转 没有32位 谁爱用谁写
+    uintptr_t Mem_lsp64(uintptr_t addres);                                 // 指针跳转
+    uintptr_t Mem_lsp32(uintptr_t addres);                                 // 指针跳转 针对的是32位架构的游戏 而不是插件本身
     // 数据声明 原本是想要用aoto封装读写 但是考虑到小小白也不会 就舍弃了
     float Mem_getFloat(uintptr_t addres);             // 获取地址的Float
     int Mem_getDword(uintptr_t addres);               // 获取内存的Dworld
@@ -116,7 +116,7 @@ extern "C++"
     uintptr_t Mem_readPointer(uintptr_t orgin, std::vector<uintptr_t> &vec); // 读取指针 升级版噢
 
     // 驱动模块 目前支持 AC 驱动 哈哈哈哈 自用 5.10 5.15 4.14.168 其他的我不管 因为自用
-    bool initQX(bool info); // 开启内核支持 当然框架肯定就废了 自行抉择
+    bool initKernel(bool info); // 开启内核支持 当然框架肯定就废了 自行抉择
 
 #ifdef __cplusplus
 }
